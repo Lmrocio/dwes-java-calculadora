@@ -25,15 +25,25 @@ public class Main {
             if (line == null) break;
             line = line.trim();
             if (line.equalsIgnoreCase("exit")) break;
-            if (line.isBlank()) continue;
 
+            // Reto de César (4): Hacer una función para limpiar la pantalla sin eliminar el resultado: añadir un comando clear que limpia la consola sin salir del programa y borrar el resultado (sin reiniciar).
+            if (line.equalsIgnoreCase("clear")) {
+                for (int i = 0; i < 20; i++) {
+                    System.out.print("\n");
+                }
+                System.out.println(HELP);
+                continue;
+            };
+            //
+
+            if (line.isBlank()) continue;
             try {
                 List<Token> tokens = new Lexer(line).lex();
                 Expr ast = new Parser(tokens).parse();
                 double result = Evaluator.eval(ast);
                 System.out.println(result);
             } catch (IllegalArgumentException ex) {
-                System.out.println("Error: " + ex.getMessage());
+                System.err.println("Error: " + ex.getMessage());
             } catch (Exception ex) {
                 System.out.println("Error inesperado: " + ex);
             }
