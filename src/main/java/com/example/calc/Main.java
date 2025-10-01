@@ -34,7 +34,6 @@ public class Main {
                 System.out.println(HELP);
                 continue;
             };
-            //
 
             if (line.isBlank()) continue;
             try {
