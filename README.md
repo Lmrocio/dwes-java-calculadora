@@ -254,3 +254,30 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
   
 ---
 ## Solución a un reto propuesto por los alumnos
+
+En nuestro caso, hemos elegido un reto propuesto por César:
+• Hacer una función para limpiar la pantalla sin eliminar el resultado.
+
+El fragmento de código implementa una forma sencilla de “limpiar” la consola sin borrar el resultado previo del programa, simulando un efecto de limpieza visual al desplazar el contenido existente hacia arriba mediante saltos de línea.
+
+``
+java
+if (line.equalsIgnoreCase("clear")) {
+    for (int i = 0; i < 20; i++) {
+        System.out.print("\n");
+    }
+    System.out.println(HELP);
+    continue;
+}
+``
+Explicación paso a paso:
+
+1. Condición de entrada (if (line.equalsIgnoreCase("clear"))): Comprueba si el texto introducido por el usuario es “clear”, ignorando mayúsculas o minúsculas gracias al método equalsIgnoreCase(). Esto permite aceptar entradas como clear, Clear o CLEAR.
+
+2. Limpieza visual de la consola: Dentro del bloque if, se ejecuta un bucle for que imprime 20 saltos de línea (\n). Este método no borra realmente el contenido de la consola, pero lo “desplaza” fuera de la vista, generando el mismo efecto que una limpieza de pantalla en la mayoría de entornos de consola básicos (como la terminal integrada de un IDE o CMD).
+
+3. Reimpresión de la ayuda (System.out.println(HELP)): Después de “limpiar” la consola, se muestra nuevamente la variable HELP, que probablemente contiene información útil o un menú de ayuda para el usuario. Esto refuerza la idea de que la pantalla se limpia pero sin perder el contexto o el contenido importante del programa.
+
+4. Instrucción continue: Hace que el programa salte al siguiente ciclo del bucle principal, evitando ejecutar el resto del código asociado a otras instrucciones. Esto garantiza que, tras limpiar la consola, el flujo del programa continúe correctamente.
+
+En Java, no existe una función nativa universal para limpiar la consola, ya que su comportamiento depende del sistema operativo y del entorno de ejecución. Por ello, imprimir múltiples saltos de línea es una solución práctica, multiplataforma y segura para simular la limpieza visual de la pantalla, especialmente en ejercicios o aplicaciones de consola simples. Además, el uso de equalsIgnoreCase() mejora la usabilidad al permitir al usuario escribir el comando sin preocuparse por las mayúsculas.
