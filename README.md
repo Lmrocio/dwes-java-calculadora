@@ -10,7 +10,7 @@
     - [Retos de modificación](#retos-de-modificaci%C3%B3n)
     - [Retos de predicción](#retos-de-predicci%C3%B3n)
     - [Retos de diseño](#retos-de-dise%C3%B1o)
-3. [Solución a un reto propuesto por los alumnos]()
+3. [Solución a un reto propuesto por los alumnos](#soluci%C3%B3n-a-un-reto-propuesto-por-los-alumnos)
 
 ---
 
@@ -255,12 +255,11 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
 ---
 ## Solución a un reto propuesto por los alumnos
 
-En nuestro caso, hemos elegido un reto propuesto por César:
-• Hacer una función para limpiar la pantalla sin eliminar el resultado.
+En nuestro caso, hemos elegido un reto propuesto por César: Hacer una función para limpiar la pantalla sin eliminar el resultado.
 
 El fragmento de código implementa una forma sencilla de “limpiar” la consola sin borrar el resultado previo del programa, simulando un efecto de limpieza visual al desplazar el contenido existente hacia arriba mediante saltos de línea.
 
-``
+````
 java
 if (line.equalsIgnoreCase("clear")) {
     for (int i = 0; i < 20; i++) {
@@ -269,7 +268,8 @@ if (line.equalsIgnoreCase("clear")) {
     System.out.println(HELP);
     continue;
 }
-``
+````
+
 Explicación paso a paso:
 
 1. Condición de entrada (if (line.equalsIgnoreCase("clear"))): Comprueba si el texto introducido por el usuario es “clear”, ignorando mayúsculas o minúsculas gracias al método equalsIgnoreCase(). Esto permite aceptar entradas como clear, Clear o CLEAR.
