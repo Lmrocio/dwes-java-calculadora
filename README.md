@@ -12,8 +12,9 @@
     - [Retos de diseño](#retos-de-dise%C3%B1o)
 3. [Solución a un reto propuesto por los alumnos](#soluci%C3%B3n-a-un-reto-propuesto-por-los-alumnos)
 
----
+<br>
 
+---
 ## Detalles e instrucciones sobre el código 
 
 - Expresiones: `+ - * / ^`, paréntesis, funciones `sin(x)`, `cos(x)`.
@@ -29,8 +30,9 @@
   ```
 > Si falta el wrapper JAR: `gradle wrapper --gradle-version 8.9` (una vez).
 
----
+<br>
 
+---
 ## Soluciones a los retos propuestos por el profesor
 
 ### Retos de comprensión
@@ -66,8 +68,8 @@ Por otro lado, el `parser` (analizador sintáctico) toma la secuencia de tokens 
 Un parser recursivo implementa cada regla de la gramática como una función, y estas se llaman entre sí para analizar estructuras anidadas. Es un tipo de parser muy práctico porque las reglas de un lenguaje suelen ser recursivas, es decir, nos encontramos expresiones dentro de expresiones, paréntesis, etc. Una de sus principales ventajas es que permiten un mayor control sobre el manejo de errores y la construcción de árboles de sintaxis abstracta.
 Ejemplo:
 
-```
-java
+```java
+
 Expr parseExpression() {
     Expr node = parseTerm();
     while (current.type == TokenType.PLUS || current.type == TokenType.MINUS) {
@@ -105,6 +107,8 @@ En este ejemplo, encontramos la recursión en:
 
 - ``parseExpression()`` llama a ``parseTerm()``; ``parseTerm()`` llama a ``parseFactor()``; ``parseFactor()`` puede llamar a ``parseExpression()`` otra vez si encuentra '('.
 - Esa llamada ``parseFactor()`` → ``parseExpression()`` → ... es precisamente la recursión necesaria para analizar paréntesis y expresiones anidadas.
+
+<br>
 
 ---
 ### Retos de depuración    
@@ -194,6 +198,8 @@ El evaluador recorre el árbol llamando a ``Evaluator.eval()`` en cada nodo: pri
 
 El motivo de este comportamiento es que el parser y el evaluador respetan la precedencia de operadores, considerando que la potencia (``^``) tiene mayor prioridad que la suma fuera de paréntesis y que los paréntesis fuerzan la evaluación de la suma antes de aplicar la potencia.
 
+<br>
+
 ---
 ### Retos de modificación    
 
@@ -220,6 +226,9 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
     
 - Haz que la calculadora acepte números negativos explícitos como `-5 + 3`.
   - La calculadora ya acepta numeros negativos explícitos como el que sale en el ejemplo.
+
+<br>
+
 ---
 ### Retos de predicción   
 
@@ -237,6 +246,9 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
 - ¿Qué devuelve la calculadora con `(2 + 3) * (4 + 5)`?
 
   El resultado a la hora de realizar la operacion es  `(2 + 3) * (4 + 5) = 45.0` debido a la propiedad que tienen las matematicas de que las operaciones realizadas dentro de los paretesis se realizan con anterioridad dando que : `(2 + 3) * (4 + 5) = (5) * (9) = 45.0`
+
+<br>
+
 ---
   ### Retos de diseño    
 
@@ -251,7 +263,9 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
 - Si quisieras añadir soporte para variables (`x = 5`, `y = 2 * x`), ¿en qué parte del código lo implementarías y por qué?
 
   - Implementar variables requiere ampliar la lógica del parser (para reconocer asignaciones) y del evaluator (para guardar y usar los valores).
-  
+
+<br>
+
 ---
 ## Solución a un reto propuesto por los alumnos
 
@@ -259,8 +273,8 @@ En nuestro caso, hemos elegido un reto propuesto por César: Hacer una función 
 
 El fragmento de código implementa una forma sencilla de “limpiar” la consola sin borrar el resultado previo del programa, simulando un efecto de limpieza visual al desplazar el contenido existente hacia arriba mediante saltos de línea.
 
-````
-java
+````java
+
 if (line.equalsIgnoreCase("clear")) {
     for (int i = 0; i < 20; i++) {
         System.out.print("\n");
@@ -272,12 +286,12 @@ if (line.equalsIgnoreCase("clear")) {
 
 Explicación paso a paso:
 
-1. Condición de entrada (if (line.equalsIgnoreCase("clear"))): Comprueba si el texto introducido por el usuario es “clear”, ignorando mayúsculas o minúsculas gracias al método equalsIgnoreCase(). Esto permite aceptar entradas como clear, Clear o CLEAR.
+1. Condición de entrada (``if (line.equalsIgnoreCase("clear"``))): Comprueba si el texto introducido por el usuario es “clear”, ignorando mayúsculas o minúsculas gracias al método ``equalsIgnoreCase()``. Esto permite aceptar entradas como clear, Clear o CLEAR.
 
-2. Limpieza visual de la consola: Dentro del bloque if, se ejecuta un bucle for que imprime 20 saltos de línea (\n). Este método no borra realmente el contenido de la consola, pero lo “desplaza” fuera de la vista, generando el mismo efecto que una limpieza de pantalla en la mayoría de entornos de consola básicos (como la terminal integrada de un IDE o CMD).
+2. Limpieza visual de la consola: Dentro del bloque ``if``, se ejecuta un bucle for que imprime 20 saltos de línea (``\n``). Este método no borra realmente el contenido de la consola, pero lo “desplaza” fuera de la vista, generando el mismo efecto que una limpieza de pantalla en la mayoría de entornos de consola básicos (como la terminal integrada de un IDE o CMD).
 
-3. Reimpresión de la ayuda (System.out.println(HELP)): Después de “limpiar” la consola, se muestra nuevamente la variable HELP, que probablemente contiene información útil o un menú de ayuda para el usuario. Esto refuerza la idea de que la pantalla se limpia pero sin perder el contexto o el contenido importante del programa.
+3. Reimpresión de la ayuda (``System.out.println(HELP)``): Después de “limpiar” la consola, se muestra nuevamente la variable HELP, que probablemente contiene información útil o un menú de ayuda para el usuario. Esto refuerza la idea de que la pantalla se limpia pero sin perder el contexto o el contenido importante del programa.
 
 4. Instrucción continue: Hace que el programa salte al siguiente ciclo del bucle principal, evitando ejecutar el resto del código asociado a otras instrucciones. Esto garantiza que, tras limpiar la consola, el flujo del programa continúe correctamente.
 
-En Java, no existe una función nativa universal para limpiar la consola, ya que su comportamiento depende del sistema operativo y del entorno de ejecución. Por ello, imprimir múltiples saltos de línea es una solución práctica, multiplataforma y segura para simular la limpieza visual de la pantalla, especialmente en ejercicios o aplicaciones de consola simples. Además, el uso de equalsIgnoreCase() mejora la usabilidad al permitir al usuario escribir el comando sin preocuparse por las mayúsculas.
+En Java, no existe una función nativa universal para limpiar la consola, ya que su comportamiento depende del sistema operativo y del entorno de ejecución. Por ello, imprimir múltiples saltos de línea es una solución práctica, multiplataforma y segura para simular la limpieza visual de la pantalla, especialmente en ejercicios o aplicaciones de consola simples. Además, el uso de ``equalsIgnoreCase()`` mejora la usabilidad al permitir al usuario escribir el comando sin preocuparse por las mayúsculas.
