@@ -1,4 +1,11 @@
 # Calc21 — Calculadora educativa (Java 21)
+
+## Índice
+
+1. [Detalles e instrucciones sobre el código](#detalles-e-instrucciones-sobre-el-c%C3%B3digo)
+2. [Soluciones a los retos propuestos por el profesor]()
+3. [Solución a un reto propuests por los alumnos]()
+
 ## Detalles e instrucciones sobre el código 
 
 - Expresiones: `+ - * / ^`, paréntesis, funciones `sin(x)`, `cos(x)`.
@@ -16,7 +23,7 @@
 
 ---
 
-## Solución a los retos propuestos por el profesor
+## Soluciones a los retos propuestos por el profesor
 
 ### Retos de comprensión
 
