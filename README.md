@@ -36,9 +36,76 @@
 ### Retos de comprensión
 
 - Explica qué es un Token y da un ejemplo de cómo aparece en la expresión `3 + 5 * 2`.
- 
-- ¿Qué diferencia hay entre el Lexer y el Parser?  
+
+Un Token es la unidad atómica de significado que reconoce el analizador léxico (lexer) de un lenguaje de programación. Es decir, cuando escribimos un código, lo primero que hace el compilador/intérprete es dividir el texto en tokens que tienen un tipo (número, identificador, operador, etc.) y un lexema (texto original); además, puede llevar datos extras como valor numérico o posición.
+
+En el ejemplo:
+
+| Token | Tipo   | Lexema |
+|-------|--------|-------|
+| 1     | `NUMBER` | `3` |
+| 2     | `PLUS`   | `+` |
+| 3     | `NUMBER` | `5` |
+| 4     | `MUL`    | `*` |
+| 5     | `NUMBER` | `2` |
+
+El tokenizado es importante porque reduce la ambigüedad de caracteres y permite al `parser` trabajar con piezas ya categorizadas.
+
+- ¿Qué diferencia hay entre el Lexer y el Parser?
+
+El lexer es el programa o componente que lee la secuencia de caracteres y la convierte en una secuencia de tokens, para lo que usa expresiones regulares (`regex`) o autómatas finitos. Su función se desarrolla leyendo dichos caracteres para agruparlos según los patrones (números, identificadores, etc.), para devolver los tokens de uno en uno al parser.
+
+Por otro lado, el `parser` (analizador sintáctico) toma la secuencia de tokens para comprobar/crear la estructura sintáctica según la gramática del lenguaje. El `parser` genera un árbol de parseo, que contiene nodos por cada producción de la gramática, o un árbol de sintaxis abstracta, es una versión más simple que el anterior ya que se suprimen las redundancias. Con este proceso, el `parser` verifica/decide:
+
+  1. Orden y anidamiento correcto.
+  2. Precedencia y asociatividad de los operadores. (Por ejemplo, * antes que +)
+  3. Estructuras válidas según las reglas. (If, while, expresiones, etc.)
+
 - ¿Qué significa que el parser sea recursivo? Pon un ejemplo de función que lo demuestra.
+
+Un parser recursivo implementa cada regla de la gramática como una función, y estas se llaman entre sí para analizar estructuras anidadas. Es un tipo de parser muy práctico porque las reglas de un lenguaje suelen ser recursivas, es decir, nos encontramos expresiones dentro de expresiones, paréntesis, etc. Una de sus principales ventajas es que permiten un mayor control sobre el manejo de errores y la construcción de árboles de sintaxis abstracta.
+Ejemplo:
+
+```
+java
+Expr parseExpression() {
+    Expr node = parseTerm();
+    while (current.type == TokenType.PLUS || current.type == TokenType.MINUS) {
+        Token op = current; eat(op.type);
+        Expr right = parseTerm();
+        node = new BinaryExpr(node, op, right);
+    }
+    return node;
+}
+Expr parseTerm() {
+    Expr node = parseFactor();
+    while (current.type == TokenType.MUL || current.type == TokenType.DIV) {
+        Token op = current; eat(op.type);
+        Expr right = parseFactor();
+        node = new BinaryExpr(node, op, right);
+    }
+    return node;
+}
+Expr parseFactor() {
+    if (current.type == TokenType.NUMBER) {
+        int v = Integer.parseInt(current.lexeme);
+        eat(TokenType.NUMBER);
+        return new NumberExpr(v);
+    } else if (current.type == TokenType.LPAREN) {
+        eat(TokenType.LPAREN);
+        Expr e = parseExpression(); // <-- aquí hay recursión: factor -> expression -> (term -> factor -> ...)
+        eat(TokenType.RPAREN);
+        return e;
+    } else {
+        throw new RuntimeException("Sintaxis inválida");
+    }
+}
+```
+En este ejemplo, encontramos la recursión en:
+
+- ``parseExpression()`` llama a ``parseTerm()``; ``parseTerm()`` llama a ``parseFactor()``; ``parseFactor()`` puede llamar a ``parseExpression()`` otra vez si encuentra '('.
+- Esa llamada ``parseFactor()`` → ``parseExpression()`` → ... es precisamente la recursión necesaria para analizar paréntesis y expresiones anidadas.
+
 ---
 ### Retos de depuración    
 
