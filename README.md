@@ -56,6 +56,9 @@
   ### Retos de diseño    
 
 - El código actual usa un parser recursivo. ¿Qué ventaja tiene frente a procesar los tokens con un bucle y pila manual?
+
+  - Esto hace que el código sea más claro, más fácil de entender y mantener, ya que sigue directamente la estructura de la gramática, en cambio, con un bucle y una pila manual habría que gestionar explícitamente el orden y jerarquía de los operadores o elementos, lo cual puede complicar el código y aumentar el riesgo de errores
+
 - ¿Por qué es útil separar la calculadora en las fases lexer → parser → evaluator en vez de hacerlo todo en un solo método? 
 - Si quisieras añadir soporte para variables (`x = 5`, `y = 2 * x`), ¿en qué parte del código lo implementarías y por qué?
   
