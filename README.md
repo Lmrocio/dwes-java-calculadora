@@ -3,8 +3,16 @@
 ## Índice
 
 1. [Detalles e instrucciones sobre el código](#detalles-e-instrucciones-sobre-el-c%C3%B3digo)
-2. [Soluciones a los retos propuestos por el profesor]()
-3. [Solución a un reto propuests por los alumnos]()
+2. [Soluciones a los retos propuestos por el profesor](#soluciones-a-los-retos-propuestos-por-el-profesor)
+
+    - [Retos de comprensión](#retos-de-comprensi%C3%B3n)
+    - [Retos de depuración](#retos-de-depuraci%C3%B3n)
+    - [Retos de modificación](#retos-de-modificaci%C3%B3n)
+    - [Retos de predicción](#retos-de-predicci%C3%B3n)
+    - [Retos de diseño](#retos-de-dise%C3%B1o)
+4. [Solución a un reto propuests por los alumnos]()
+
+---
 
 ## Detalles e instrucciones sobre el código 
 
