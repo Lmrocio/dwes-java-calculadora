@@ -10,7 +10,7 @@
     - [Retos de modificación](#retos-de-modificaci%C3%B3n)
     - [Retos de predicción](#retos-de-predicci%C3%B3n)
     - [Retos de diseño](#retos-de-dise%C3%B1o)
-3. [Solución a un reto propuests por los alumnos]()
+3. [Solución a un reto propuesto por los alumnos]()
 
 ---
 
@@ -166,4 +166,4 @@ El motivo de este comportamiento es que el parser y el evaluador respetan la pre
   - Implementar variables requiere ampliar la lógica del parser (para reconocer asignaciones) y del evaluator (para guardar y usar los valores).
   
 ---
-## Solución a un reto propuests por los alumnos
+## Solución a un reto propuesto por los alumnos
