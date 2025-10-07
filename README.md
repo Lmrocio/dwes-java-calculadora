@@ -1,4 +1,5 @@
 # Calc21 — Calculadora educativa (Java 21)
+## Detalles e instrucciones sobre el código 
 
 - Expresiones: `+ - * / ^`, paréntesis, funciones `sin(x)`, `cos(x)`.
 - Arquitectura por capas: Lexer → Parser → AST → Evaluator → REPL.
