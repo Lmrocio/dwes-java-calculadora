@@ -3,7 +3,7 @@ package com.example.calc;
 import java.util.List;
 import java.util.Scanner;
 
-85public class Main {
+public class Main {
     private static final String HELP = """
         === Calc21 ===
         Operaciones: +  -  *  /  ^    Funciones: sin(x), cos(x), tan(x) (en pi/rad)
