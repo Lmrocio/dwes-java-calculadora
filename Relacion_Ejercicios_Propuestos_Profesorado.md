@@ -7,7 +7,8 @@
 # Retos de depuración    
 
 - ¿Qué devuelve la calculadora con la entrada: `2 + 3 * 4` y por qué? 
-- ¿Qué ocurre si escribimos una expresión no válida como `2 + *`? ¿Cómo reacciona el código? • ¿Qué devuelve si calculamos `(2 + 3) ^ 2`?
+- ¿Qué ocurre si escribimos una expresión no válida como `2 + *`? ¿Cómo reacciona el código?
+- ¿Qué devuelve si calculamos `(2 + 3) ^ 2`?
   
 # Retos de modificación    
 
