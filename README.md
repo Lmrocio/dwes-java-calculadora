@@ -59,6 +59,11 @@
 
   - Esto hace que el código sea más claro, más fácil de entender y mantener, ya que sigue directamente la estructura de la gramática, en cambio, con un bucle y una pila manual habría que gestionar explícitamente el orden y jerarquía de los operadores o elementos, lo cual puede complicar el código y aumentar el riesgo de errores
 
-- ¿Por qué es útil separar la calculadora en las fases lexer → parser → evaluator en vez de hacerlo todo en un solo método? 
+- ¿Por qué es útil separar la calculadora en las fases lexer → parser → evaluator en vez de hacerlo todo en un solo método?
+
+  - para seguir los principios SOLIF (Separación de responsabilidades), ademas de tener un codigo mas mantenible y claro, permitiendo facilitar su reutilizacion.
+
 - Si quisieras añadir soporte para variables (`x = 5`, `y = 2 * x`), ¿en qué parte del código lo implementarías y por qué?
+
+  - Implementar variables requiere ampliar la lógica del parser (para reconocer asignaciones) y del evaluator (para guardar y usar los valores).
   
