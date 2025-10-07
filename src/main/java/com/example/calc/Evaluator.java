@@ -29,6 +29,8 @@ public final class Evaluator {
                 yield switch (c.name()) {
                     case "sin" -> Math.sin(x);
                     case "cos" -> Math.cos(x);
+                    case "tan" -> Math.tan(x);
+                    case "sqrt" -> Math.sqrt(x);
                     default -> throw new IllegalArgumentException("Función no soportada: " + c.name());
                 };
             }

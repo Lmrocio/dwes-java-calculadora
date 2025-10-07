@@ -3,16 +3,17 @@ package com.example.calc;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+85public class Main {
     private static final String HELP = """
         === Calc21 ===
-        Operaciones: +  -  *  /  ^    Funciones: sin(x), cos(x)
+        Operaciones: +  -  *  /  ^    Funciones: sin(x), cos(x), tan(x) (en pi/rad)
         Precedencia: ^ (derecha), luego * /, luego + -
         Ejemplos:
           1 + 2*3
           (1 + 2) * 3 ^ 2
           -2 ^ 3
           sin(3.14159/2) + cos(0)
+          tan(45) * sqrt(9)
         Escribe 'exit' para salir.
         """;
 

@@ -32,9 +32,29 @@
 ---
 ### Retos de modificación    
 
-- Añade la función `tan(x)` usando el mismo esquema que `sin` y `cos`. 
+- Añade la función `tan(x)` usando el mismo esquema que `sin` y `cos`.
+  - Aquí simplemente hemos añadido un caso en el evaluator para que cuando detecte que es un funcion tambien acepte la funcion tan() y utilice la libreria de Math para calcular la tangente de x 
+
+```java
+    case Call c -> {
+    double x = eval(c.arg());
+    yield switch (c.name()) {
+            case "sin" -> Math.sin(x);
+            case "cos" -> Math.cos(x);
+            case "tan" -> Math.tan(x);
+            default -> throw new IllegalArgumentException("Función no soportada: " + c.name());
+            };
+    }
+```
+
 - Modifica el parser para que acepte también la función `sqrt(x)`.
+  - En el parser no hace falta cambiar nada para que acepte una función nueva, como hemos hecho antes solo hace falta añadir un nuevo caso de una función, añadiendo solo esta línea:
+  ```java
+    case "sqrt" -> Math.sqrt(x);
+  ```
+    
 - Haz que la calculadora acepte números negativos explícitos como `-5 + 3`.
+  - La calculadora ya acepta numeros negativos explícitos como el que sale en el ejemplo.
 ---
 ### Retos de predicción   
 
